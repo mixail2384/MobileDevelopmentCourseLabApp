@@ -25,20 +25,12 @@ class ArticleActivity : AppCompatActivity() {
         // Устанавливаем слушатели для кнопок
         likeButton.setOnClickListener {
             likeCount++
-            updateLikeCount()
+            likeCountTextView.text = likeCount.toString()
         }
 
         dislikeButton.setOnClickListener {
             dislikeCount++
-            updateDislikeCount()
+            dislikeCountTextView.text = dislikeCount.toString()
         }
-    }
-
-    private fun updateLikeCount() {
-        likeCountTextView.text = "$likeCount Likes"
-    }
-
-    private fun updateDislikeCount() {
-        dislikeCountTextView.text = "$dislikeCount Dislikes"
     }
 }
