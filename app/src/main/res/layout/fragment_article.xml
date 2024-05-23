@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,7 +13,7 @@
         android:textStyle="bold"
         android:padding="16dp" />
 
-    <!-- Основная часть -->
+    <!-- Подзаголовок -->
     <TextView
         android:id="@+id/subtitleTextView"
         android:layout_width="match_parent"
@@ -34,8 +33,7 @@
         android:layout_height="200dp"
         android:layout_below="@id/subtitleTextView"
         android:scaleType="centerCrop"
-        android:src="@drawable/article_image"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/article_image" />
 
     <!-- Кнопки лайк и дизлайк -->
     <LinearLayout
@@ -50,25 +48,41 @@
             android:id="@+id/likeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/like_button_bg"
+            android:drawableLeft="@drawable/ic_thumb_up"
+            android:text="Like"
+            android:textSize="18sp"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:text="Like"
-            android:textSize="18sp" />
+            android:background="@drawable/like_button_bg" />
+
+        <TextView
+            android:id="@+id/likeCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center_vertical" />
 
         <Button
             android:id="@+id/dislikeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_thumb_down"
             android:text="Dislike"
             android:textSize="18sp"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:background="@drawable/dislike_button_bg"
-            android:layout_marginStart="32dp" />
+            android:background="@drawable/dislike_button_bg" />
 
+        <TextView
+            android:id="@+id/dislikeCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical" />
     </LinearLayout>
-
-    <!-- Счетчик лайков и дизлайков -->
-
 </RelativeLayout>
