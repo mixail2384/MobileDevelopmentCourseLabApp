@@ -1,37 +1,44 @@
-package com.example.mobiledevelopmentcourselabapp
-
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.mobiledevelopmentcourselabapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class ArticleActivity : AppCompatActivity() {
+    private lateinit var likeButton: Button
+    private lateinit var dislikeButton: Button
+    private lateinit var likeCountTextView: TextView
+    private lateinit var dislikeCountTextView: TextView
 
-    private var binding: ActivityMainBinding? = null
+    private var likeCount = 0
+    private var dislikeCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.article_layout)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        // Находим вьюшки по ID
+        likeButton = findViewById(R.id.likeButton)
+        dislikeButton = findViewById(R.id.dislikeButton)
+        likeCountTextView = findViewById(R.id.likeCountTextView)
+        dislikeCountTextView = findViewById(R.id.dislikeCountTextView)
 
-        val navView: BottomNavigationView? = binding?.navView
+        // Устанавливаем слушатели для кнопок
+        likeButton.setOnClickListener {
+            likeCount++
+            updateLikeCount()
+        }
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        dislikeButton.setOnClickListener {
+            dislikeCount++
+            updateDislikeCount()
+        }
+    }
 
-        // Добавлявать новые элементы меню по их id
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_article,
-                R.id.navigation_second,
-                R.id.navigation_third
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView?.setupWithNavController(navController)
+    private fun updateLikeCount() {
+        likeCountTextView.text = "$likeCount Likes"
+    }
+
+    private fun updateDislikeCount() {
+        dislikeCountTextView.text = "$dislikeCount Dislikes"
     }
 }
